@@ -1,0 +1,772 @@
+[
+  {
+    "status": "investigate",
+    "source": "185.220.101.45",
+    "target": "vpn-gateway",
+    "timestamp": "2024-12-10T08:12:00Z",
+    "severity": "medium",
+    "event_type": "failed_login",
+    "category": "identity",
+    "message": "Authentication failure on VPN gateway from external IP"
+  },
+  {
+    "status": "escalated",
+    "source": "185.220.101.45",
+    "target": "vpn-gateway",
+    "timestamp": "2024-12-10T08:13:22Z",
+    "severity": "high",
+    "event_type": "failed_login",
+    "category": "identity",
+    "message": "Repeated authentication failure \u2014 password spray pattern emerging"
+  },
+  {
+    "status": "escalated",
+    "source": "185.220.101.45",
+    "target": "vpn-gateway",
+    "timestamp": "2024-12-10T08:14:45Z",
+    "severity": "high",
+    "event_type": "failed_login",
+    "category": "identity",
+    "message": "Third consecutive failed login \u2014 brute force threshold reached"
+  },
+  {
+    "status": "investigate",
+    "source": "10.0.4.22",
+    "target": "DMZ-SRV-01",
+    "timestamp": "2024-12-10T08:21:00Z",
+    "severity": "medium",
+    "event_type": "port_scan",
+    "category": "reconnaissance",
+    "message": "Horizontal port scan detected from internal engineering subnet"
+  },
+  {
+    "status": "investigate",
+    "source": "10.0.4.22",
+    "target": "DMZ-SRV-02",
+    "timestamp": "2024-12-10T08:22:15Z",
+    "severity": "medium",
+    "event_type": "port_scan",
+    "category": "reconnaissance",
+    "message": "Follow-on scan to adjacent DMZ host from same source"
+  },
+  {
+    "status": "contained",
+    "source": "WS-FIN-07",
+    "target": "endpoint-protection",
+    "timestamp": "2024-12-10T08:35:00Z",
+    "severity": "critical",
+    "event_type": "malware_detected",
+    "category": "malware",
+    "message": "Trojan dropper detected in download folder \u2014 unsigned binary payroll_q4.exe"
+  },
+  {
+    "status": "investigate",
+    "source": "WS-FIN-07",
+    "target": "defender",
+    "timestamp": "2024-12-10T08:36:30Z",
+    "severity": "high",
+    "event_type": "service_disabled",
+    "category": "defense-evasion",
+    "message": "Windows Defender service stopped following malware detection event"
+  },
+  {
+    "status": "escalated",
+    "source": "WS-FIN-07",
+    "target": "powershell.exe",
+    "timestamp": "2024-12-10T08:50:00Z",
+    "severity": "critical",
+    "event_type": "powershell_abuse",
+    "category": "execution",
+    "message": "Encoded PowerShell command executed from user profile directory"
+  },
+  {
+    "status": "escalated",
+    "source": "WS-FIN-07",
+    "target": "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+    "timestamp": "2024-12-10T09:02:00Z",
+    "severity": "high",
+    "event_type": "registry_persistence",
+    "category": "persistence",
+    "message": "Suspicious registry run key added \u2014 persistence mechanism identified"
+  },
+  {
+    "status": "escalated",
+    "source": "WS-FIN-07",
+    "target": "SRV-DB-01",
+    "timestamp": "2024-12-10T09:15:00Z",
+    "severity": "critical",
+    "event_type": "lateral_movement",
+    "category": "movement",
+    "message": "SMB lateral movement attempt to database server from compromised workstation"
+  },
+  {
+    "status": "investigate",
+    "source": "WS-FIN-07",
+    "target": "198.51.100.44",
+    "timestamp": "2024-12-10T09:22:00Z",
+    "severity": "high",
+    "event_type": "beaconing",
+    "category": "command-and-control",
+    "message": "Periodic HTTP beacon to known C2 infrastructure at 60-second intervals"
+  },
+  {
+    "status": "escalated",
+    "source": "SRV-DB-01",
+    "target": "203.0.113.88",
+    "timestamp": "2024-12-10T09:30:00Z",
+    "severity": "critical",
+    "event_type": "data_exfiltration",
+    "category": "exfiltration",
+    "message": "Outbound data transfer of 2.4GB to external IP \u2014 exceeds baseline by 800%"
+  },
+  {
+    "status": "investigate",
+    "source": "WS-FIN-07",
+    "target": "resolver01",
+    "timestamp": "2024-12-10T09:45:00Z",
+    "severity": "high",
+    "event_type": "dns_tunnel",
+    "category": "command-and-control",
+    "message": "Long DNS TXT query chain indicative of data exfiltration over DNS"
+  },
+  {
+    "status": "escalated",
+    "source": "user:j.smith",
+    "target": "domain-controller",
+    "timestamp": "2024-12-10T10:00:00Z",
+    "severity": "critical",
+    "event_type": "privilege_escalation",
+    "category": "identity",
+    "message": "Unexpected domain admin privilege escalation for standard user account"
+  },
+  {
+    "status": "investigate",
+    "source": "91.240.118.14",
+    "target": "o365-portal",
+    "timestamp": "2024-12-10T10:15:00Z",
+    "severity": "medium",
+    "event_type": "failed_login",
+    "category": "identity",
+    "message": "Failed O365 login attempt from new external location"
+  },
+  {
+    "status": "investigate",
+    "source": "91.240.118.14",
+    "target": "o365-portal",
+    "timestamp": "2024-12-10T10:16:00Z",
+    "severity": "medium",
+    "event_type": "failed_login",
+    "category": "identity",
+    "message": "Second failed O365 login from same source"
+  },
+  {
+    "status": "escalated",
+    "source": "91.240.118.14",
+    "target": "o365-portal",
+    "timestamp": "2024-12-10T10:17:00Z",
+    "severity": "high",
+    "event_type": "failed_login",
+    "category": "identity",
+    "message": "Third failed O365 login \u2014 threshold reached"
+  },
+  {
+    "status": "investigate",
+    "source": "user:m.patel",
+    "target": "o365-portal",
+    "timestamp": "2024-12-10T10:18:00Z",
+    "severity": "high",
+    "event_type": "geo_impossible_travel",
+    "category": "identity",
+    "message": "Impossible travel: login from Mumbai 3 minutes after login from London"
+  },
+  {
+    "status": "escalated",
+    "source": "45.155.205.10",
+    "target": "portal.company.local",
+    "timestamp": "2024-12-10T10:30:00Z",
+    "severity": "high",
+    "event_type": "web_attack",
+    "category": "application",
+    "message": "SQL injection pattern detected in web application request"
+  },
+  {
+    "status": "escalated",
+    "source": "45.155.205.10",
+    "target": "WEB-01",
+    "timestamp": "2024-12-10T10:45:00Z",
+    "severity": "critical",
+    "event_type": "web_attack",
+    "category": "application",
+    "message": "Remote code execution attempt via path traversal on web server"
+  },
+  {
+    "status": "escalated",
+    "source": "K8S-NODE-03",
+    "target": "host-kernel",
+    "timestamp": "2024-12-10T11:00:00Z",
+    "severity": "critical",
+    "event_type": "container_escape",
+    "category": "cloud",
+    "message": "Container breakout attempt detected \u2014 privileged namespace access"
+  },
+  {
+    "status": "investigate",
+    "source": "SRV-APP-02",
+    "target": "/etc/crontab",
+    "timestamp": "2024-12-10T11:15:00Z",
+    "severity": "high",
+    "event_type": "file_integrity",
+    "category": "persistence",
+    "message": "Crontab modification on application server outside change window"
+  },
+  {
+    "status": "investigate",
+    "source": "172.16.5.99",
+    "target": "payments-api",
+    "timestamp": "2024-12-10T11:30:00Z",
+    "severity": "medium",
+    "event_type": "port_scan",
+    "category": "reconnaissance",
+    "message": "Port scan against payments API from internal cloud subnet"
+  },
+  {
+    "status": "investigate",
+    "source": "10.0.2.15",
+    "target": "SRV-DB-01",
+    "timestamp": "2024-12-10T11:45:00Z",
+    "severity": "medium",
+    "event_type": "failed_login",
+    "category": "identity",
+    "message": "Failed database authentication from internal host"
+  },
+  {
+    "status": "investigate",
+    "source": "10.0.2.15",
+    "target": "SRV-DB-01",
+    "timestamp": "2024-12-10T11:46:00Z",
+    "severity": "medium",
+    "event_type": "failed_login",
+    "category": "identity",
+    "message": "Second failed database login attempt"
+  },
+  {
+    "status": "escalated",
+    "source": "10.0.2.15",
+    "target": "SRV-DB-01",
+    "timestamp": "2024-12-10T11:47:00Z",
+    "severity": "high",
+    "event_type": "failed_login",
+    "category": "identity",
+    "message": "Third failed database login \u2014 brute force suspected"
+  },
+  {
+    "status": "contained",
+    "source": "WS-OPS-02",
+    "target": "endpoint-protection",
+    "timestamp": "2024-12-10T12:00:00Z",
+    "severity": "critical",
+    "event_type": "malware_detected",
+    "category": "malware",
+    "message": "Ransomware dropper detected \u2014 execution blocked by endpoint protection"
+  },
+  {
+    "status": "investigate",
+    "source": "WS-OPS-02",
+    "target": "104.244.76.5",
+    "timestamp": "2024-12-10T12:15:00Z",
+    "severity": "high",
+    "event_type": "beaconing",
+    "category": "command-and-control",
+    "message": "Beacon pattern detected to Tor exit node \u2014 possible C2 channel"
+  },
+  {
+    "status": "escalated",
+    "source": "WS-OPS-02",
+    "target": "SRV-APP-02",
+    "timestamp": "2024-12-10T12:30:00Z",
+    "severity": "critical",
+    "event_type": "lateral_movement",
+    "category": "movement",
+    "message": "WMI-based lateral movement from compromised ops workstation"
+  },
+  {
+    "status": "investigate",
+    "source": "10.0.4.22",
+    "target": "SRV-DB-01",
+    "timestamp": "2024-12-10T13:00:00Z",
+    "severity": "medium",
+    "event_type": "port_scan",
+    "category": "reconnaissance",
+    "message": "Database server port probe from engineering workstation"
+  },
+  {
+    "status": "investigate",
+    "source": "198.51.100.22",
+    "target": "rdp-gateway",
+    "timestamp": "2024-12-11T08:00:00Z",
+    "severity": "medium",
+    "event_type": "failed_login",
+    "category": "identity",
+    "message": "RDP authentication failure from external IP"
+  },
+  {
+    "status": "investigate",
+    "source": "198.51.100.22",
+    "target": "rdp-gateway",
+    "timestamp": "2024-12-11T08:01:00Z",
+    "severity": "medium",
+    "event_type": "failed_login",
+    "category": "identity",
+    "message": "Second RDP authentication failure"
+  },
+  {
+    "status": "escalated",
+    "source": "198.51.100.22",
+    "target": "rdp-gateway",
+    "timestamp": "2024-12-11T08:02:00Z",
+    "severity": "high",
+    "event_type": "failed_login",
+    "category": "identity",
+    "message": "RDP brute force threshold reached from external source"
+  },
+  {
+    "status": "investigate",
+    "source": "WS-ENG-09",
+    "target": "powershell.exe",
+    "timestamp": "2024-12-11T09:00:00Z",
+    "severity": "high",
+    "event_type": "powershell_abuse",
+    "category": "execution",
+    "message": "Obfuscated PowerShell script executed via scheduled task"
+  },
+  {
+    "status": "investigate",
+    "source": "WS-ENG-09",
+    "target": "resolver01",
+    "timestamp": "2024-12-11T09:15:00Z",
+    "severity": "high",
+    "event_type": "dns_tunnel",
+    "category": "command-and-control",
+    "message": "Suspicious DNS query volume \u2014 potential tunneling or DGA activity"
+  },
+  {
+    "status": "escalated",
+    "source": "89.248.165.30",
+    "target": "payments-api",
+    "timestamp": "2024-12-11T10:00:00Z",
+    "severity": "critical",
+    "event_type": "web_attack",
+    "category": "application",
+    "message": "API authentication bypass attempt with forged JWT token"
+  },
+  {
+    "status": "escalated",
+    "source": "WS-FIN-07",
+    "target": "SRV-DB-01",
+    "timestamp": "2024-12-11T10:30:00Z",
+    "severity": "critical",
+    "event_type": "privilege_escalation",
+    "category": "privilege",
+    "message": "Kernel exploit attempt for privilege escalation on database server"
+  },
+  {
+    "status": "escalated",
+    "source": "WS-ENG-09",
+    "target": "198.51.100.99",
+    "timestamp": "2024-12-11T11:00:00Z",
+    "severity": "critical",
+    "event_type": "data_exfiltration",
+    "category": "exfiltration",
+    "message": "Large outbound archive transfer exceeds engineering data baseline by 600%"
+  },
+  {
+    "status": "investigate",
+    "source": "WS-ENG-09",
+    "target": "syslog",
+    "timestamp": "2024-12-11T11:30:00Z",
+    "severity": "high",
+    "event_type": "service_disabled",
+    "category": "defense-evasion",
+    "message": "Syslog forwarding service disabled \u2014 logging gap created"
+  },
+  {
+    "status": "investigate",
+    "source": "WEB-01",
+    "target": "/var/www/html/index.php",
+    "timestamp": "2024-12-11T12:00:00Z",
+    "severity": "high",
+    "event_type": "file_integrity",
+    "category": "application",
+    "message": "Web application file modification detected outside deployment window"
+  },
+  {
+    "status": "contained",
+    "source": "WS-LEGAL-04",
+    "target": "endpoint-protection",
+    "timestamp": "2024-12-12T08:30:00Z",
+    "severity": "critical",
+    "event_type": "malware_detected",
+    "category": "malware",
+    "message": "Spear-phishing payload detected in email attachment \u2014 macro-enabled document"
+  },
+  {
+    "status": "investigate",
+    "source": "WS-LEGAL-04",
+    "target": "185.220.101.99",
+    "timestamp": "2024-12-12T08:45:00Z",
+    "severity": "high",
+    "event_type": "beaconing",
+    "category": "command-and-control",
+    "message": "C2 beacon established from legal workstation to infrastructure known for APT activity"
+  },
+  {
+    "status": "investigate",
+    "source": "user:k.jones",
+    "target": "vpn-gateway",
+    "timestamp": "2024-12-12T09:00:00Z",
+    "severity": "high",
+    "event_type": "geo_impossible_travel",
+    "category": "identity",
+    "message": "VPN login from Singapore 8 minutes after login from Chicago"
+  },
+  {
+    "status": "escalated",
+    "source": "172.16.3.11",
+    "target": "domain-controller",
+    "timestamp": "2024-12-12T09:30:00Z",
+    "severity": "high",
+    "event_type": "port_scan",
+    "category": "reconnaissance",
+    "message": "Domain controller port scan from unexpected internal host"
+  },
+  {
+    "status": "escalated",
+    "source": "WS-LEGAL-04",
+    "target": "domain-controller",
+    "timestamp": "2024-12-12T10:00:00Z",
+    "severity": "critical",
+    "event_type": "lateral_movement",
+    "category": "movement",
+    "message": "Pass-the-hash attempt against domain controller from legal workstation"
+  },
+  {
+    "status": "escalated",
+    "source": "WS-LEGAL-04",
+    "target": "HKLM\\System\\CurrentControlSet\\Services",
+    "timestamp": "2024-12-12T10:15:00Z",
+    "severity": "high",
+    "event_type": "registry_persistence",
+    "category": "persistence",
+    "message": "Malicious service registered in system hive for persistent access"
+  },
+  {
+    "status": "escalated",
+    "source": "K8S-NODE-01",
+    "target": "host-kernel",
+    "timestamp": "2024-12-12T10:30:00Z",
+    "severity": "critical",
+    "event_type": "container_escape",
+    "category": "cloud",
+    "message": "Privileged container escape via kernel vulnerability exploitation"
+  },
+  {
+    "status": "escalated",
+    "source": "WS-LEGAL-04",
+    "target": "104.21.60.100",
+    "timestamp": "2024-12-12T11:00:00Z",
+    "severity": "critical",
+    "event_type": "data_exfiltration",
+    "category": "exfiltration",
+    "message": "Sensitive document archive uploaded to cloud storage infrastructure"
+  },
+  {
+    "status": "investigate",
+    "source": "45.155.205.10",
+    "target": "portal.company.local",
+    "timestamp": "2024-12-12T11:30:00Z",
+    "severity": "high",
+    "event_type": "web_attack",
+    "category": "application",
+    "message": "Cross-site scripting payload injected into authentication form"
+  },
+  {
+    "status": "investigate",
+    "source": "103.145.22.80",
+    "target": "vpn-gateway",
+    "timestamp": "2024-12-13T09:00:00Z",
+    "severity": "medium",
+    "event_type": "failed_login",
+    "category": "identity",
+    "message": "VPN login failure from APAC region \u2014 possible credential stuffing"
+  },
+  {
+    "status": "investigate",
+    "source": "103.145.22.80",
+    "target": "vpn-gateway",
+    "timestamp": "2024-12-13T09:01:00Z",
+    "severity": "medium",
+    "event_type": "failed_login",
+    "category": "identity",
+    "message": "Continued VPN authentication failures from same source"
+  },
+  {
+    "status": "escalated",
+    "source": "103.145.22.80",
+    "target": "vpn-gateway",
+    "timestamp": "2024-12-13T09:02:00Z",
+    "severity": "high",
+    "event_type": "failed_login",
+    "category": "identity",
+    "message": "VPN credential stuffing attack confirmed \u2014 high failure volume"
+  },
+  {
+    "status": "escalated",
+    "source": "SRV-APP-02",
+    "target": "powershell.exe",
+    "timestamp": "2024-12-13T10:00:00Z",
+    "severity": "critical",
+    "event_type": "powershell_abuse",
+    "category": "execution",
+    "message": "AMSI bypass technique followed by encoded payload download"
+  },
+  {
+    "status": "investigate",
+    "source": "user:svc_deploy",
+    "target": "SRV-APP-02",
+    "timestamp": "2024-12-13T10:30:00Z",
+    "severity": "high",
+    "event_type": "privilege_escalation",
+    "category": "privilege",
+    "message": "Service account privileges elevated beyond expected deployment scope"
+  },
+  {
+    "status": "escalated",
+    "source": "domain-controller",
+    "target": "C:\\Windows\\System32\\ntds.dit",
+    "timestamp": "2024-12-13T11:00:00Z",
+    "severity": "critical",
+    "event_type": "file_integrity",
+    "category": "identity",
+    "message": "NTDS.dit access detected \u2014 potential credential database dump"
+  },
+  {
+    "status": "escalated",
+    "source": "SRV-APP-02",
+    "target": "resolver01",
+    "timestamp": "2024-12-13T11:30:00Z",
+    "severity": "high",
+    "event_type": "dns_tunnel",
+    "category": "command-and-control",
+    "message": "High-volume DNS queries to single external domain \u2014 beaconing via DNS"
+  },
+  {
+    "status": "escalated",
+    "source": "SRV-APP-02",
+    "target": "payments-api",
+    "timestamp": "2024-12-13T12:00:00Z",
+    "severity": "critical",
+    "event_type": "lateral_movement",
+    "category": "movement",
+    "message": "Unauthorized service-to-service authentication attempt on payments API"
+  },
+  {
+    "status": "investigate",
+    "source": "94.102.49.190",
+    "target": "WEB-01",
+    "timestamp": "2024-12-14T08:00:00Z",
+    "severity": "high",
+    "event_type": "web_attack",
+    "category": "application",
+    "message": "Log4Shell exploitation attempt detected in HTTP User-Agent header"
+  },
+  {
+    "status": "contained",
+    "source": "WS-CORP-12",
+    "target": "endpoint-protection",
+    "timestamp": "2024-12-14T08:30:00Z",
+    "severity": "critical",
+    "event_type": "malware_detected",
+    "category": "malware",
+    "message": "Coinminer executable detected \u2014 cryptomining malware quarantined"
+  },
+  {
+    "status": "investigate",
+    "source": "WS-CORP-12",
+    "target": "pool.minexmr.com",
+    "timestamp": "2024-12-14T09:00:00Z",
+    "severity": "medium",
+    "event_type": "beaconing",
+    "category": "command-and-control",
+    "message": "Outbound connection to known cryptocurrency mining pool"
+  },
+  {
+    "status": "investigate",
+    "source": "WS-CORP-12",
+    "target": "SRV-DB-01",
+    "timestamp": "2024-12-14T09:30:00Z",
+    "severity": "medium",
+    "event_type": "port_scan",
+    "category": "reconnaissance",
+    "message": "Database port probe from compromised corporate workstation"
+  },
+  {
+    "status": "investigate",
+    "source": "WS-CORP-12",
+    "target": "wuauserv",
+    "timestamp": "2024-12-14T10:00:00Z",
+    "severity": "medium",
+    "event_type": "service_disabled",
+    "category": "defense-evasion",
+    "message": "Windows Update service disabled \u2014 patch management disrupted"
+  },
+  {
+    "status": "investigate",
+    "source": "WS-CORP-12",
+    "target": "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+    "timestamp": "2024-12-14T10:30:00Z",
+    "severity": "high",
+    "event_type": "registry_persistence",
+    "category": "persistence",
+    "message": "Coinminer persistence established via registry run key"
+  },
+  {
+    "status": "investigate",
+    "source": "user:a.kumar",
+    "target": "o365-portal",
+    "timestamp": "2024-12-15T08:00:00Z",
+    "severity": "high",
+    "event_type": "geo_impossible_travel",
+    "category": "identity",
+    "message": "O365 login from Brazil 5 minutes after login from Germany"
+  },
+  {
+    "status": "investigate",
+    "source": "185.220.101.50",
+    "target": "o365-portal",
+    "timestamp": "2024-12-15T08:30:00Z",
+    "severity": "medium",
+    "event_type": "failed_login",
+    "category": "identity",
+    "message": "O365 authentication failure from Tor exit node"
+  },
+  {
+    "status": "investigate",
+    "source": "185.220.101.50",
+    "target": "o365-portal",
+    "timestamp": "2024-12-15T08:31:00Z",
+    "severity": "medium",
+    "event_type": "failed_login",
+    "category": "identity",
+    "message": "Continued O365 authentication failures from anonymized source"
+  },
+  {
+    "status": "escalated",
+    "source": "185.220.101.50",
+    "target": "o365-portal",
+    "timestamp": "2024-12-15T08:32:00Z",
+    "severity": "high",
+    "event_type": "failed_login",
+    "category": "identity",
+    "message": "O365 brute force from Tor \u2014 account lockout triggered"
+  },
+  {
+    "status": "escalated",
+    "source": "SRV-DB-01",
+    "target": "critical",
+    "timestamp": "2024-12-15T09:00:00Z",
+    "severity": "critical",
+    "event_type": "data_exfiltration",
+    "category": "exfiltration",
+    "message": "Database backup file transferred to external Tor-associated IP"
+  },
+  {
+    "status": "escalated",
+    "source": "SRV-DB-01",
+    "target": "185.220.101.55",
+    "timestamp": "2024-12-15T09:00:00Z",
+    "severity": "critical",
+    "event_type": "data_exfiltration",
+    "category": "exfiltration",
+    "message": "Database backup file transferred to external Tor-associated IP"
+  },
+  {
+    "status": "investigate",
+    "source": "K8S-NODE-02",
+    "target": "host-kernel",
+    "timestamp": "2024-12-15T09:30:00Z",
+    "severity": "critical",
+    "event_type": "container_escape",
+    "category": "cloud",
+    "message": "Seccomp profile bypass attempt in containerized workload"
+  },
+  {
+    "status": "investigate",
+    "source": "WS-FIN-07",
+    "target": "powershell.exe",
+    "timestamp": "2024-12-15T10:00:00Z",
+    "severity": "high",
+    "event_type": "powershell_abuse",
+    "category": "execution",
+    "message": "Living-off-the-land binary execution via PowerShell \u2014 possible LOLBin abuse"
+  },
+  {
+    "status": "escalated",
+    "source": "SRV-APP-02",
+    "target": "/etc/passwd",
+    "timestamp": "2024-12-15T10:30:00Z",
+    "severity": "critical",
+    "event_type": "file_integrity",
+    "category": "persistence",
+    "message": "Critical system file modification detected \u2014 possible backdoor account added"
+  },
+  {
+    "status": "escalated",
+    "source": "196.235.12.44",
+    "target": "payments-api",
+    "timestamp": "2024-12-16T08:00:00Z",
+    "severity": "critical",
+    "event_type": "web_attack",
+    "category": "application",
+    "message": "API rate limit bypass and credential brute force on payments endpoint"
+  },
+  {
+    "status": "investigate",
+    "source": "payments-api",
+    "target": "196.235.12.44",
+    "timestamp": "2024-12-16T08:30:00Z",
+    "severity": "high",
+    "event_type": "beaconing",
+    "category": "command-and-control",
+    "message": "Payments API establishing outbound connection to attacker-controlled infrastructure"
+  },
+  {
+    "status": "escalated",
+    "source": "user:svc_payments",
+    "target": "payments-api",
+    "timestamp": "2024-12-16T09:00:00Z",
+    "severity": "critical",
+    "event_type": "privilege_escalation",
+    "category": "privilege",
+    "message": "Payments service account used to escalate to root privileges"
+  },
+  {
+    "status": "escalated",
+    "source": "payments-api",
+    "target": "SRV-DB-01",
+    "timestamp": "2024-12-16T09:30:00Z",
+    "severity": "critical",
+    "event_type": "lateral_movement",
+    "category": "movement",
+    "message": "Compromised payments service accessing database with elevated credentials"
+  },
+  {
+    "status": "escalated",
+    "source": "payments-api",
+    "target": "196.235.12.44",
+    "timestamp": "2024-12-16T10:00:00Z",
+    "severity": "critical",
+    "event_type": "data_exfiltration",
+    "category": "exfiltration",
+    "message": "Payments transaction data exfiltration confirmed \u2014 180,000 records transferred"
+  }
+]

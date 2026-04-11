@@ -1,0 +1,9 @@
+{
+  "name": "siem-dashboard",
+  "version": "1.0.0",
+  "description": "Rakshak SOC — SIEM Dashboard",
+  "dependencies": {
+    "@vercel/blob": "latest"
+  },
+  "license": "MIT"
+}

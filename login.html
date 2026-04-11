@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rakshak SOC — Sign In</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{-webkit-font-smoothing:antialiased;}
+
+    :root,[data-theme="light"]{
+      --bg:#F7F6F3;
+      --btn-bg:#1C1C1E;
+      --btn-bg-hover:#3A3A3C;
+      --btn-text:#FFFFFF;
+      --surface:#FAFAF8;
+      --surface-2:#F2F0EB;
+      --surface-3:#E8E5DF;
+      --ink:#1C1C1E;
+      --ink-2:#3A3A3C;
+      --ink-3:#6C6C70;
+      --ink-4:#AEAEB2;
+      --border:rgba(28,28,30,0.08);
+      --border-2:rgba(28,28,30,0.14);
+      --accent:#E84545;
+      --accent-dim:rgba(232,69,69,0.08);
+      --accent-bdr:rgba(232,69,69,0.22);
+      --f-display:'Syne',system-ui,sans-serif;
+      --f-body:'DM Sans',system-ui,sans-serif;
+      --f-mono:'JetBrains Mono',monospace;
+      --r-md:10px;
+      --r-lg:14px;
+      --r-xl:20px;
+    }
+    [data-theme="dark"]{
+      --bg:#0F0F11;
+      --surface:#1A1A1E;
+      --surface-2:#222228;
+      --surface-3:#2A2A32;
+      --ink:#F0F0F5;
+      --ink-2:#C4C4D0;
+      --ink-3:#7A7A8C;
+      --ink-4:#4A4A5C;
+      --border:rgba(240,240,245,0.07);
+      --border-2:rgba(240,240,245,0.11);
+      --accent:#F05252;
+      --accent-dim:rgba(240,82,82,0.10);
+      --accent-bdr:rgba(240,82,82,0.25);
+      /* Button tokens — readable in dark mode */
+      --btn-bg:#E84545;
+      --btn-bg-hover:#C93030;
+      --btn-text:#FFFFFF;
+    }
+
+    body{
+      font-family:var(--f-body);
+      background:var(--bg);
+      color:var(--ink);
+      min-height:100vh;
+      display:grid;
+      place-items:center;
+      padding:24px;
+      position:relative;
+      transition:background 0.25s,color 0.25s;
+    }
+
+    /* Background grid pattern */
+    body::before{
+      content:'';
+      position:fixed;inset:0;pointer-events:none;
+      background-image:
+        repeating-linear-gradient(0deg,transparent,transparent 40px,rgba(28,28,30,0.025) 40px,rgba(28,28,30,0.025) 41px),
+        repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(28,28,30,0.025) 40px,rgba(28,28,30,0.025) 41px);
+    }
+
+    body::after{
+      content:'';
+      position:fixed;inset:0;pointer-events:none;
+      background:
+        radial-gradient(ellipse at 15% 20%,rgba(232,69,69,0.05) 0%,transparent 50%),
+        radial-gradient(ellipse at 85% 80%,rgba(37,99,235,0.04) 0%,transparent 50%);
+    }
+
+    .card{
+      position:relative;z-index:1;
+      width:min(100%,430px);
+      background:var(--surface);
+      border:1.5px solid var(--border-2);
+      border-radius:var(--r-xl);
+      padding:40px;
+      box-shadow:0 12px 40px rgba(0,0,0,0.1),0 4px 12px rgba(0,0,0,0.06);
+      animation:cardIn 0.5s cubic-bezier(0.16,1,0.3,1) both;
+    }
+
+    @keyframes cardIn{
+      from{opacity:0;transform:translateY(24px) scale(0.97);}
+      to{opacity:1;transform:none;}
+    }
+
+    .logo{
+      display:flex;align-items:center;gap:10px;
+      margin-bottom:32px;
+    }
+
+    .logo-icon{
+      width:34px;height:34px;
+      background:var(--ink);
+      border-radius:9px;
+      display:grid;place-items:center;
+      flex-shrink:0;
+    }
+
+    .logo-icon svg{width:18px;height:18px;}
+
+    .logo-text{display:flex;flex-direction:column;gap:1px;}
+
+    .logo-product{
+      font-family:var(--f-display);
+      font-size:15px;font-weight:700;
+      color:var(--ink);letter-spacing:-0.01em;
+    }
+
+    .logo-ver{
+      font-family:var(--f-mono);
+      font-size:9px;color:var(--ink-4);
+      letter-spacing:0.06em;
+    }
+
+    .status-row{
+      display:flex;align-items:center;gap:8px;
+      margin-left:auto;
+    }
+
+    .status-dot{
+      width:6px;height:6px;border-radius:50%;
+      background:#22c55e;
+      box-shadow:0 0 0 2px rgba(34,197,94,0.2);
+      animation:pulse 2.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.5;}}
+
+    .status-txt{
+      font-family:var(--f-mono);font-size:9px;
+      color:var(--ink-4);letter-spacing:0.06em;
+      text-transform:uppercase;
+    }
+
+    h1{
+      font-family:var(--f-display);
+      font-size:26px;font-weight:800;
+      letter-spacing:-0.03em;
+      color:var(--ink);
+      margin-bottom:6px;line-height:1.1;
+    }
+
+    .sub{
+      font-size:13px;color:var(--ink-3);
+      line-height:1.6;margin-bottom:24px;
+    }
+
+    .status-msg{
+      font-family:var(--f-mono);
+      font-size:10px;color:var(--ink-3);
+      background:var(--surface-2);
+      border:1.5px solid var(--border);
+      border-radius:6px;
+      padding:8px 12px;margin-bottom:20px;
+      transition:all 0.15s;
+    }
+
+    .status-msg.is-error{
+      color:#DC2626;
+      background:rgba(220,38,38,0.07);
+      border-color:rgba(220,38,38,0.2);
+    }
+
+    .form{display:flex;flex-direction:column;gap:16px;}
+
+    .field{display:flex;flex-direction:column;gap:5px;}
+
+    .label{
+      font-family:var(--f-mono);
+      font-size:9px;font-weight:600;
+      color:var(--ink-4);
+      text-transform:uppercase;letter-spacing:0.12em;
+    }
+
+    .input-wrap{position:relative;}
+
+    .input-icon{
+      position:absolute;left:11px;top:50%;
+      transform:translateY(-50%);
+      color:var(--ink-4);pointer-events:none;
+    }
+
+    .field-input{
+      width:100%;
+      padding:11px 12px 11px 37px;
+      border:1.5px solid var(--border-2);
+      border-radius:var(--r-md);
+      background:var(--bg);
+      color:var(--ink);font-size:14px;
+      outline:none;
+      font-family:var(--f-body);
+      transition:border-color 0.15s,box-shadow 0.15s;
+    }
+
+    .field-input::placeholder{color:var(--ink-4);}
+
+    .field-input:focus{
+      border-color:var(--accent);
+      box-shadow:0 0 0 3px var(--accent-dim);
+      background:var(--surface);
+    }
+
+    .cta{
+      display:flex;align-items:center;justify-content:center;
+      gap:8px;width:100%;
+      padding:12px 20px;
+      background:var(--btn-bg);color:var(--btn-text);
+      border:none;border-radius:var(--r-md);
+      font-family:var(--f-display);
+      font-size:14px;font-weight:600;
+      letter-spacing:0.01em;cursor:pointer;
+      transition:background 0.15s,transform 0.15s,box-shadow 0.15s;
+      box-shadow:0 2px 8px rgba(0,0,0,0.18);
+    }
+
+    .cta:hover{background:var(--btn-bg-hover);color:var(--btn-text);transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,0,0,0.22);}
+    .cta:active{transform:translateY(0);}
+
+    .divider{
+      display:flex;align-items:center;gap:10px;
+      font-family:var(--f-mono);font-size:9px;
+      color:var(--ink-4);letter-spacing:0.08em;
+      text-transform:uppercase;
+    }
+    .divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border);}
+
+    .footer{
+      margin-top:28px;padding-top:20px;
+      border-top:1px solid var(--border);
+      display:flex;align-items:center;justify-content:space-between;
+      gap:12px;
+    }
+
+    .footer-label{
+      font-family:var(--f-mono);
+      font-size:9px;color:var(--ink-4);
+      letter-spacing:0.06em;
+    }
+
+    .badges{display:flex;gap:5px;}
+
+    .badge{
+      font-family:var(--f-mono);
+      font-size:8px;font-weight:600;
+      text-transform:uppercase;letter-spacing:0.08em;
+      color:var(--ink-4);
+      border:1px solid var(--border-2);
+      border-radius:3px;padding:2px 7px;
+    }
+
+    /* Theme toggle */
+    .theme-btn{
+      position:fixed;top:16px;right:16px;
+      width:34px;height:34px;display:grid;place-items:center;
+      background:var(--surface-2);border:1.5px solid var(--border-2);
+      border-radius:6px;color:var(--ink-3);cursor:pointer;
+      transition:all 0.15s;z-index:10;
+    }
+    .theme-btn:hover{background:var(--surface-3);color:var(--ink);transform:rotate(20deg);}
+    .theme-btn .icon-sun{display:none;}
+    .theme-btn .icon-moon{display:block;}
+    [data-theme="dark"] .theme-btn .icon-sun{display:block;}
+    [data-theme="dark"] .theme-btn .icon-moon{display:none;}
+  </style>
+</head>
+<body>
+  <!-- Theme toggle -->
+  <button class="theme-btn" id="themeBtn" type="button" aria-label="Toggle theme">
+    <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+  </button>
+
+  <div class="card">
+    <div class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z"/>
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
+      </div>
+      <div class="logo-text">
+        <span class="logo-product">Rakshak SOC</span>
+        <span class="logo-ver">v2.0 · SIEM Platform</span>
+      </div>
+      <div class="status-row">
+        <span class="status-dot"></span>
+        <span class="status-txt">Operational</span>
+      </div>
+    </div>
+
+    <h1>Sign In</h1>
+    <p class="sub">Restricted to authorized security analysts. This session will be logged.</p>
+
+    <div id="authStatus" class="status-msg">Enter your analyst password to continue.</div>
+
+    <form method="POST" action="/api/auth" class="form">
+      <div class="field">
+        <label class="label" for="password">Password</label>
+        <div class="input-wrap">
+          <svg class="input-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+            <rect x="3" y="11" width="18" height="11" rx="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+          <input class="field-input" id="password" name="password" type="password"
+            placeholder="••••••••••" autocomplete="current-password" required autofocus />
+        </div>
+      </div>
+      <button type="submit" class="cta">
+        Access Dashboard
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </form>
+
+    <div class="footer">
+      <span class="footer-label">Rakshak SOC Platform</span>
+      <div class="badges">
+        <span class="badge">SOC 2</span>
+        <span class="badge">ISO 27001</span>
+        <span class="badge">NIST CSF</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Theme (runs immediately)
+    (function(){
+      const saved = localStorage.getItem("rakshak-theme");
+      const preferred = saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", preferred);
+    })();
+
+    // Theme toggle
+    document.getElementById("themeBtn").addEventListener("click", function() {
+      const current = document.documentElement.getAttribute("data-theme") || "light";
+      const next = current === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      localStorage.setItem("rakshak-theme", next);
+    });
+
+    // Error param
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("error") === "1") {
+      const s = document.getElementById("authStatus");
+      s.textContent = "Authentication failed — incorrect password. Please try again.";
+      s.className = "status-msg is-error";
+      document.getElementById("password").select();
+    }
+  </script>
+</body>
+</html>
