@@ -431,6 +431,8 @@ git push origin feature/your-feature-name
 This project uses a **client-side password gate for demo purposes only.**
 The password (`jimil`) is visible in the source code. This is intentional for a portfolio/learning project.
 
+https://rakshak-soc.vercel.app/
+
 **Do not use this authentication mechanism to protect real sensitive data.**
 For production use, replace with proper server-side authentication.
 
