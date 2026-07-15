@@ -39,6 +39,12 @@
 
 
 
+https://github.com/user-attachments/assets/6641f93e-72da-4963-a3ac-3a01f715ad67
+
+
+
+
+
 ## What Is This
 
 **Rakshak SOC** is a self-contained Security Information and Event Management (SIEM) dashboard simulation that runs entirely in the browser. It was built to demonstrate real Security Operations Center workflows without requiring Splunk, Elastic, or any enterprise tooling.
